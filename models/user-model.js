@@ -20,11 +20,6 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "product"
 }],
-    isAdmin : Boolean,
-    orders : {
-        type: Array,
-        default : []
-    },
     contact : Number,
     picture : String 
 });

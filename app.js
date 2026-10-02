@@ -8,7 +8,7 @@ const indexRoute = require("./routes/index");
 
 const cookieParser = require("cookie-parser");
 const path = require("path");
-
+require("dotenv").config();
 const db = require("./config/mongoose-connections");
 
 app.use(express.json());

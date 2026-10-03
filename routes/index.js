@@ -8,9 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    let {fullname ,email, password} = req.body; 
-
-
+    let {fullname ,email, password} = req.body;
 });
 
 

@@ -1,27 +1,33 @@
 const express = require("express");
 const router = express.Router();
-
+const {registerUser, loginUser} = require("../controller/authController");
 const ownerModel = require("../models/owner-model");
 
-router.post("/create", async (req, res) => {
-    let owners = await ownerModel.find();
-
-    if (owners.length > 0) {
-        return res
-            .status(503)
-            .send("You don't have permission to create an owner");
-    }
-
-    let { fullname, email, password } = req.body;
-
-    let createdOwner = await ownerModel.create({
-        fullname,
-        email,
-        password
+if (process.env.NODE_ENV === "development") {
+    router.post("/create", async (req, res) => {
+        let owners = await ownerModel.find();
     });
+}
 
-    res.status(201).send(createdOwner);
-});
+// router.post("/create", async (req, res) => {
+//     let owners = await ownerModel.find();
+
+//     if (owners.length > 0) {
+//         return res
+//             .status(503)
+//             .send("You don't have permission to create an owner");
+//     }
+
+//     let { fullname, email, password } = req.body;
+
+//     let createdOwner = await ownerModel.create({
+//         fullname,
+//         email,
+//         password
+//     });
+
+//     res.status(201).send(createdOwner);
+// });
 
 router.get("/", (req, res) => {
     res.send("hey");

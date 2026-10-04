@@ -1,5 +1,6 @@
 const express = require("express");
-const userModel = require("../models/owner-model")
+const userModel = require("../models/owner-model");
+const { isLoggedIn } = require("../middleware/isLoggedIn");
 
 const router = express.Router();
 
@@ -7,8 +8,8 @@ router.get("/", (req, res) => {
     res.render("index", { error: "" });
 });
 
-router.post("/register", async (req, res) => {
-    let {fullname ,email, password} = req.body;
+router.post("/shop", isLoggedIn, async (req, res) => {
+    res.render("shop", { user: req.user });
 });
 
 

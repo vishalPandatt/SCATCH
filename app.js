@@ -11,7 +11,7 @@ const path = require("path");
 require("dotenv").config();
 const db = require("./config/mongoose-connections");
 
-app.use(express.json());
+app.use(express.json());    
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
